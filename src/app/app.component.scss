@@ -1,0 +1,333 @@
+.square {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.square .one {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  border-radius: 40% 50% 40% 50% / 50% 40% 50% 40%;
+  transition: 0.5s;
+  animation: animate 3s linear infinite;
+}
+.twitch:hover .one {
+  border: none;
+  background: #003049;
+}
+.square .two {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  border-radius: 60% 50% 60% 50% / 50% 60% 50% 60%;
+  transition: 0.4s;
+  animation: animate 4s linear infinite;
+}
+.twitch:hover .two {
+  border: none;
+  background: #2a9d8f;
+}
+.square .three {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  border-radius: 40% 40% 40% 40% / 40% 40% 40% 40%;
+  transition: 0.5s;
+  animation: animate2 8s linear infinite;
+}
+.twitch:hover .three {
+  border: none;
+  background: #003566;
+}
+.circle {
+  position: relative;
+  transition: 0.5s;
+}
+.square:hover {
+  color: white;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.containerXL {
+  padding: 40px;
+  display: flex;
+}
+.typing-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 40px;
+}
+.typing-content {
+  display: flex;
+}
+#dot1 {
+  background: #4285f4;
+}
+#dot2 {
+  background: #db4437;
+}
+#dot3 {
+  background: #f4b400;
+}
+#dot4 {
+  background: #0f9d58;
+}
+.typing-content .typing-dots {
+  height: 10px;
+  width: 10px;
+  background: white;
+  border-radius: 20%;
+  margin-left: 4px;
+  animation: animatedots 1.5s var(--delay) ease-in-out infinite;
+}
+@keyframes animatedots {
+  0%,
+  44% {
+    transform: translateY(0px);
+  }
+  22% {
+    opacity: 0.4;
+    transform: translateY(-7px);
+  }
+  44% {
+    opacity: 0.2;
+    transform: translateY(0px);
+  }
+}
+.typing-content .circle {
+  border-radius: 50%;
+}
+.typing-container .bar {
+  height: 15px;
+  border-radius: 0;
+  width: 8px;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.customBox {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  display: grid;
+  place-content: center;
+  color: white;
+  text-shadow: 0 1px 0 #000;
+  --border-angle: 0turn; // For animation.
+  --main-bg: conic-gradient(from var(--border-angle), #112 5%, #112 6%);
+  border: solid 1px transparent;
+  border-radius: 8px;
+  --gradient-border: conic-gradient(
+    from var(--border-angle),
+    transparent 75%,
+    #fff4c6 79%,
+    #fff4c6 86%,
+    transparent 89%
+  );
+  background: var(--main-bg) padding-box, var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+
+  background-position: center center;
+
+  animation: bg-spin 3s linear infinite;
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0turn;
+}
+.customTextBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.customContainer {
+  width: 145px;
+  height: 145px;
+  .customCircle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  &.svg {
+    margin-top: 75px;
+    margin-right: 45px;
+    .customCircle {
+      position: absolute;
+      offset-path: path('M0,0a72.5,72.5 0 1,0 145,0a72.5,72.5 0 1,0 -145,0');
+      offset-rotate: 0deg;
+    }
+    svg {
+      position: absolute;
+      overflow: inherit !important;
+    }
+  }
+  &.border {
+    border-radius: 50%;
+    border: 1px solid gray;
+    transform: rotate(90deg);
+
+    .customCircle {
+      position: relative;
+      offset-path: border-box;
+      offset-rotate: -90deg;
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  .circle-1 {
+    width: 45px;
+    height: 45px;
+    background: #814ab1;
+  }
+  .circle-2 {
+    width: 38px;
+    height: 38px;
+    background: #4cbdc9;
+  }
+  .circle-3 {
+    width: 30px;
+    height: 30px;
+    background: #ffce24;
+  }
+  .circle-4 {
+    width: 22px;
+    height: 22px;
+    background: #ff2d74;
+  }
+  @for $i from 1 through 4 {
+    .circle-#{$i} {
+      animation: load 1.8s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+      animation-delay: 0.147s * $i;
+      animation-fill-mode: forwards;
+      z-index: 100 - $i;
+    }
+  }
+}
+@keyframes load {
+  from {
+    offset-distance: 0;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+@keyframes swell {
+  0%,
+  100% {
+    transform: translate3d(0, -25px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+@keyframes bounce {
+  10% {
+    transform: translateY(0);
+  }
+}
+@keyframes pulse {
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+.button-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.floating-btn {
+  animation: bounce 2s linear infinite;
+  align-items: center;
+  background-color: #007dbd;
+  border-radius: 50%;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  position: relative;
+  transition: 0.3s;
+  width: 80px;
+
+  .pulse-item {
+    background-color: #007dbd;
+    border-radius: 100%;
+    height: 100%;
+    opacity: 0.7;
+    position: absolute;
+    width: 100%;
+  }
+
+  .icons {
+    font-size: 50px;
+    position: relative;
+    transition: 0.8s;
+  }
+
+  &:hover {
+    animation-play-state: paused;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.25);
+
+    .pulse-item {
+      animation: pulse 1s ease-out infinite;
+
+      &:nth-of-type(2) {
+        animation-delay: -0.5s;
+      }
+    }
+
+    .icons {
+      transform: rotate(180deg);
+    }
+  }
+}
